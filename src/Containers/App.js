@@ -7,7 +7,7 @@ import * as actions from "../Actions";
 import { connect } from "react-redux";
 import "./App.css";
 
-class CompareApp extends Component {
+export class CompareApp extends Component {
   componentWillMount() {
     this.props.getProducts();
   }
