@@ -1,7 +1,7 @@
 import * as type from "./Constants/actionTypes";
 import fetch from "cross-fetch";
 
-export const getProducts = () => dispatch =>
+export const getProducts = dispatch =>
   fetch(`products.json`)
     .then(response => response.json())
     .then(response => {

@@ -8,9 +8,9 @@ import { connect } from "react-redux";
 import "./App.css";
 
 class CompareApp extends Component {
-  // componentWillMount(){
-  //   this.props.getProducts;
-  // }
+  componentWillMount() {
+    this.props.getProducts();
+  }
 
   openNav = () => {
     document.getElementById("mySidenav").style.width = "100%";
@@ -32,7 +32,12 @@ class CompareApp extends Component {
       case "SHOW_EXPENSIVE":
         return products.filter(p => p.priceCategory === "E");
       case "SEARCH_PRODUCT":
-        return products.filter(p => p.name.toLowerCase().trim().includes(filter.text));
+        return products.filter(p =>
+          p.name
+            .toLowerCase()
+            .trim()
+            .includes(filter.text)
+        );
       case "SHOW_ALL":
         return products;
     }
@@ -73,7 +78,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProducts: dispatch(actions.getProducts()),
+    getProducts: () => dispatch(actions.getProducts),
     compare: product => dispatch(actions.compare(product)),
     reset: () => dispatch(actions.resetCompare()),
     search: filter => {
